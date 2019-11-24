@@ -4,8 +4,12 @@ Rails.application.routes.draw do
     get :current_time, to: 'home#current_time'
 
     resource :currency do
-      post :convert
+      get :convert
       get :lists
+    end
+
+    resource :vat do
+      get :validate
     end
   end
 end
