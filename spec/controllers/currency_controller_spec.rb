@@ -20,9 +20,10 @@ RSpec.describe Api::CurrenciesController, type: :controller do
     end
 
     it 'converts the currency and output the result' do
-      allow(RestClient).to receive(:post).and_return('INR_USD': '0.013929')
+      allow(RestClient).to receive(:post).and_return('INR_USD': '0.13936')
       post :convert, { params: { amount: 10, 'source-currency': 'INR', 'target-currency': 'USD' } }
-      expect(JSON.parse(response.body)['converted_amount']).to eq(0.13929)
+      expect(JSON.parse(response.body)['converted_amount']).to eq(0.13936)
+      expect(JSON.parse(response.body)['currency']).to eq('USD')
     end
 
   end
